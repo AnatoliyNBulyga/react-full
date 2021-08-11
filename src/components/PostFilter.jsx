@@ -4,7 +4,7 @@ import MySelect from "./UI/select/MySelect";
 
 const PostFilter = ({filter, setFilter}) => {
     const options = [{value: 'title', name: 'By title'}, {value: 'body', name: 'By description'}];
-    
+
     return (
         <div>
             <MyInput value={filter.query} onChange={e => setFilter({...filter, query: e.target.value})} placeholder="Поиск..."/>
