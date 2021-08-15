@@ -1,42 +1,30 @@
-import React, {useState} from 'react';
+// core
+import React from 'react';
+import {BrowserRouter, Route, NavLink} from "react-router-dom";
+// styles
 import './styles/App.css';
-import PostList from "./components/PostList";
-import PostForm from "./components/PostForm";
-import PostFilter from "./components/PostFilter";
-import MyModal from "./components/UI/modal/MyModal";
-import MyButton from "./components/UI/button/MyButton";
-import {usePosts} from "./hooks/usePosts";
+// components
+import About from "./pages/About";
+import Posts from "./pages/Posts";
 
 function App() {
-    const [posts, setPosts] = useState([]);
+    return (
+        <BrowserRouter>
+            <nav className="navbar">
+                <div className="navbar__link">
+                    <NavLink to="/about">О сайте</NavLink>
+                    <NavLink to="/posts">Посты</NavLink>
+                </div>
 
-    const [filter, setFilter] = useState({sort: '', query: ''});
-    const [modal, setModal] = useState(false);
-    const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
-
-    const createPost = (newPost) => {
-        setPosts([...posts, newPost]);
-        setModal(false);
-    }
-
-    // get post from child component
-    const removePost = (post) => {
-        setPosts(posts.filter( p => p.id !== post.id ));
-    }
-
-  return (
-    <div className="App">
-        <MyButton style={{marginTop: '30px'}} onClick={() => setModal(true)}>
-            Create user
-        </MyButton>
-        <MyModal visible={modal} setVisible={setModal}>
-            <PostForm create={createPost} />
-        </MyModal>
-        <hr style={{margin: '15px 0'}} />
-        <PostFilter filter={filter} setFilter={setFilter} />
-        <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Посты про JS" />
-    </div>
-  );
+            </nav>
+            <Route path="/about">
+                <About/>
+            </Route>
+            <Route path="/posts">
+                <Posts/>
+            </Route>
+        </BrowserRouter>
+    );
 }
 
 export default App;

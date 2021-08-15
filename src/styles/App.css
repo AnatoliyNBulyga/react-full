@@ -6,7 +6,8 @@
 
 #root {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .App {
@@ -34,4 +35,30 @@
 .post-exit-active {
     transform: translateX(-350px);
     transition: all 500ms ease-in;
+}
+.pagination {
+    margin-top: 30px;
+}
+.pagination__button {
+    padding: 4px 8px;
+    border: 1px solid teal;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.pagination__button.pagination__button--current {
+    border: 2px solid orange;
+    font-weight: bold;
+}
+
+.navbar {
+    height: 50px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    background-color: lightgray;
+}
+
+.navbar__links {
+    margin-left: auto;
 }
