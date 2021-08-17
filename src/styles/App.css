@@ -62,3 +62,9 @@
 .navbar__links {
     margin-left: auto;
 }
+
+.post__btns {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 15px;
+}
